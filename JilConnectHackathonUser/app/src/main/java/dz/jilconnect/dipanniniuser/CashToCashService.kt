@@ -40,6 +40,4 @@ interface CashToCashService {
     fun workerDataAsync(
         @Path("data") location: String
     ): Deferred<List<WorkersResult>>
-
-
 }
