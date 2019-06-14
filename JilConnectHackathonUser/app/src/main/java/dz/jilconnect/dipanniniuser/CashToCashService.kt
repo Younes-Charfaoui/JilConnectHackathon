@@ -7,7 +7,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Path
 import java.util.concurrent.TimeUnit
@@ -15,11 +14,9 @@ import java.util.concurrent.TimeUnit
 interface CashToCashService {
 
     companion object {
-        private const val BASE_URL = "http://5fac28ca.ngrok.io/"
+        private const val BASE_URL = "http://9a2c2b46.ngrok.io/"
         private const val REGISTER = "register"
         private const val PROFILE = "api/profile"
-        private const val IMAGE_ADS = "pub_images.php"
-        const val IMAGE_DIR = BASE_URL + "pubImages/"
 
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -40,7 +37,6 @@ interface CashToCashService {
     }
 
     @GET("/api/checkin/{data}")
-    @FormUrlEncoded
     fun workerDataAsync(
         @Path("data") location: String
     ): Deferred<List<WorkersResult>>
