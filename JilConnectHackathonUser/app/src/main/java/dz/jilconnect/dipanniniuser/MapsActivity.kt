@@ -65,7 +65,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         CoroutineScope(Dispatchers.IO).launch {
                             val networkLayer = NetworkLayer()
                             val response = networkLayer.getWorkerData(
-                                "${location.longitude},${location.latitude}")
+                                "${location.longitude},${location.latitude}"
+                            )
                             Log.d("TAGME", response.toString())
                             CoroutineScope(Dispatchers.Main).launch {
                                 for (result in response) {
@@ -105,6 +106,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         } else {
             Toast.makeText(this, "Please accept permission", Toast.LENGTH_LONG).show()
         }
+
+        map.setInfoWindowAdapter(WorkerMarkerInfoAdapter(this))
     }
 
     private fun showMarker(result: WorkersResult) {
@@ -119,7 +122,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         .snippet("Phone : ${result.phone} \nDistance : ${result.distance}")
                         .icon(BitmapDescriptorFactory.defaultMarker(markersColors.shuffled()[0]))
                 )
-            currentLocationMarkers[result.id.toString()]?.tag = result.id.toString()
+            currentLocationMarkers[result.id.toString()]?.tag = result
+            currentLocationMarkers[result.id.toString()]?.showInfoWindow()
         }
     }
 }
