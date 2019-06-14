@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -32,6 +31,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var map: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val currentLocationMarkers = mutableMapOf<String, Marker>()
+    private var firstTime = true
     private val markersColors = listOf(
         HUE_AZURE, HUE_BLUE, HUE_CYAN,
         HUE_GREEN, HUE_MAGENTA, HUE_ORANGE,
@@ -111,6 +111,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
         map.setInfoWindowAdapter(WorkerMarkerInfoAdapter(this))
+        map.setOnInfoWindowClickListener {
+            val data = it.tag as WorkersResult
+            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${data.phone}"))
+            startActivity(intent)
+        }
     }
 
     private fun showMarker(result: WorkersResult) {
@@ -121,12 +126,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 map.addMarker(
                     MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker())
                         .position(latLng)
-                        .title(result.name)
-                        .snippet("Phone : ${result.phone} \nDistance : ${result.distance}")
                         .icon(BitmapDescriptorFactory.defaultMarker(markersColors.shuffled()[0]))
                 )
             currentLocationMarkers[result.id.toString()]?.tag = result
-            currentLocationMarkers[result.id.toString()]?.showInfoWindow()
+            if (firstTime) {
+                map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15.0f))
+                firstTime = false
+            }
         }
     }
 }

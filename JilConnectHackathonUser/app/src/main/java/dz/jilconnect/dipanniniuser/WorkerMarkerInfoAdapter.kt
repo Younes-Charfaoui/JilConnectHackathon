@@ -22,7 +22,6 @@ class WorkerMarkerInfoAdapter(private val context: Context) : GoogleMap.InfoWind
         val phoneTv = view.findViewById<TextView>(R.id.phone)
         val distanceTv = view.findViewById<TextView>(R.id.distance)
         val moneyTv = view.findViewById<TextView>(R.id.moneyTv)
-        val callButton = view.findViewById<Button>(R.id.callButton)
 
         val workerInfo = marker?.tag as WorkersResult
 
@@ -31,10 +30,6 @@ class WorkerMarkerInfoAdapter(private val context: Context) : GoogleMap.InfoWind
             phoneTv.text = phone
             distanceTv.text = "$distance km"
             moneyTv.text = cost
-            callButton.setOnClickListener {
-                val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phone"))
-                context.startActivity(intent)
-            }
         }
 
         return view
