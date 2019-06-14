@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Profile"
+          android:orderInCategory="100"
+          app:showAsAction="never"
+          android:id="@+id/profile_action"/>
+
+    <item android:title="Update Profile"
+          android:orderInCategory="101"
+          app:showAsAction="never"
+          android:id="@+id/update_action"/>
+</menu>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AuthActivity"
+>
+
+    <LinearLayout
+            android:padding="24dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+    >
+
+        <TextView android:layout_width="wrap_content"
+                  android:text="Sign Up"
+                  android:textSize="34sp"
+                  android:id="@+id/titleText"
+                  android:fontFamily="sans-serif-condensed-light"
+                  android:layout_height="wrap_content"/>
+
+        <ImageView android:layout_width="wrap_content" android:layout_margin="16dp" android:layout_gravity="center"
+                   android:src="@drawable/ic_undraw_happy_feeling" android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:id="@+id/nameContainer"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
+                                                                     android:id="@+id/nameEdit"
+                                                                     android:hint="Name"
+                                                                     android:inputType="textPersonName"
+                                                                     android:layout_margin="8dp"
+                                                                     android:layout_height="match_parent"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                                                               android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
+                                                                     android:layout_margin="8dp"
+                                                                     android:hint="Email"
+                                                                     android:id="@+id/emailEdit"
+                                                                     android:inputType="textEmailAddress"
+                                                                     android:layout_height="match_parent"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                                                               android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
+                                                                     android:layout_margin="8dp"
+                                                                     android:hint="Password"
+                                                                     android:inputType="textPassword"
+                                                                     android:id="@+id/passwordEdit"
+                                                                     android:layout_height="match_parent"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button android:layout_width="match_parent"
+                android:backgroundTint="@color/colorAccent"
+                android:textColor="@android:color/white"
+                android:text="Sign Up"
+                android:layout_margin="8dp"
+                android:id="@+id/signButton"
+
+                android:layout_height="wrap_content"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_gravity="center"
+                  android:text="Login"
+                  android:textSize="20sp"
+                  android:id="@+id/otherActionTextView"
+                  android:textColor="@color/colorPrimary"
+                  android:clickable="true"
+                  android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</ScrollView>

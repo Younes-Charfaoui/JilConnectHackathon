@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        tools:context=".UpdateProfileActivity">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:layout_height="wrap_content">
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_margin="24dp"
+                   android:layout_gravity="center"
+                   android:src="@drawable/ic_undraw_update"
+                   android:layout_height="wrap_content"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_margin="16dp"
+                  android:textSize="19sp"
+                  android:textAlignment="center"
+                  android:text="Please add your number and your location to find you when we need you !"
+                  android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:id="@+id/nameContainer"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
+                                                                     android:id="@+id/phoneEdit"
+                                                                     android:hint="Phone"
+                                                                     android:inputType="phone"
+                                                                     android:layout_margin="8dp"
+                                                                     android:layout_height="match_parent"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_margin="8dp"
+                  android:textSize="16sp"
+                  android:textAlignment="center"
+                  android:layout_gravity="center"
+                  android:text="Tap the Location Button to calculate you position"
+                  android:layout_height="wrap_content"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton android:layout_width="wrap_content"
+                                                                               android:layout_gravity="center"
+                                                                               android:layout_margin="8dp"
+                                                                               android:id="@+id/myLocationFab"
+                                                                               app:srcCompat="@drawable/ic_my_location"
+                                                                               android:layout_height="wrap_content"/>
+
+        <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_margin="24dp"
+                android:text="Save"
+                android:id="@+id/saveButton"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@color/colorPrimary"/>
+
+    </LinearLayout>
+</ScrollView>
