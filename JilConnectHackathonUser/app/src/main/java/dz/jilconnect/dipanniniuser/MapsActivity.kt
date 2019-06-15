@@ -67,9 +67,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     if (location != null)
                         CoroutineScope(Dispatchers.IO).launch {
                             val networkLayer = NetworkLayer()
-                            val response = networkLayer.getWorkerData(
-                                "${location.latitude},${location.longitude}"
-                            )
+                            val response = networkLayer.getWorkerData("${location.latitude},${location.longitude}")
                             Log.d("TAGME", response.toString())
                             CoroutineScope(Dispatchers.Main).launch {
                                 for (result in response) {

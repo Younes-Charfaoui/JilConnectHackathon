@@ -1,22 +1,22 @@
-package dz.jilconnect.dipanniniuser
-
+package dz.jilconnect.dipannini.webservices
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import dz.jilconnect.dipannini.model.UserProfile
+import dz.jilconnect.dipannini.model.UserRegistrationResponse
+
 import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.*
 import java.util.concurrent.TimeUnit
 
-interface CashToCashService {
+interface DepaniniWorkerService {
 
     companion object {
         private const val BASE_URL = "http://22d50575.ngrok.io/"
         private const val REGISTER = "register"
-        private const val PROFILE = "api/profile"
 
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -36,8 +36,22 @@ interface CashToCashService {
         }
     }
 
-    @GET("/api/checkin/{data}")
-    fun workerDataAsync(
-        @Path("data") location: String
-    ): Deferred<List<WorkersResult>>
+    @POST(REGISTER)
+    @FormUrlEncoded
+    fun signUpAsync(
+        @Field("name") name: String,
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): Deferred<UserRegistrationResponse>
+
+    @GET("api/profile/{id}")
+    fun getUserDataAsync(@Path("id") id: String): Deferred<UserProfile>
+
+    @PATCH("api/profile")
+    @FormUrlEncoded
+    fun updateAsync(
+        @Field("id") id: String,
+        @Field("phone") phone: String,
+        @Field("location") location: String
+    ): Deferred<UserProfile>
 }

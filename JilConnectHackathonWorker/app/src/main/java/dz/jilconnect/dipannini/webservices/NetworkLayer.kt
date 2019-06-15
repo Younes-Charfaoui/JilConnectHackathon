@@ -2,8 +2,8 @@ package dz.jilconnect.dipannini.webservices
 
 class NetworkLayer {
 
-    private val webService: CashToCashService = CashToCashService.retrofit
-        .create(CashToCashService::class.java)
+    private val webService: DepaniniWorkerService = DepaniniWorkerService.retrofit
+        .create(DepaniniWorkerService::class.java)
 
     suspend fun register(name: String, email: String, password: String) =
         webService.signUpAsync(name, email, password).await()

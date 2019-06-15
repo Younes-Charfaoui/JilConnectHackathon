@@ -8,7 +8,6 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -53,13 +52,12 @@ class UpdateProfileActivity : AppCompatActivity() {
 
         locationCallback = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult?) {
-
                 if (locationResult == null) {
-
                     return
                 }
                 for (location in locationResult.locations) {
                     currentLocation = "${location.latitude} , ${location.longitude}"
+                    locationTv.text = currentLocation
                 }
             }
         }
@@ -76,7 +74,6 @@ class UpdateProfileActivity : AppCompatActivity() {
         }
 
         myLocationFab.setOnClickListener {
-
             if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                 Toast.makeText(this, "Please Activate Location", Toast.LENGTH_LONG).show()
                 turnOnGpsDialog()
@@ -94,6 +91,8 @@ class UpdateProfileActivity : AppCompatActivity() {
             } else {
                 fusedLocationClient.lastLocation.addOnCompleteListener {
                     location = it.result
+                    val locationText = "${location?.latitude} , ${location?.longitude}"
+                    locationTv.text = locationText
                 }
             }
         }
@@ -112,6 +111,7 @@ class UpdateProfileActivity : AppCompatActivity() {
                         PreferencesManager(this@UpdateProfileActivity).userId,
                         phoneEdit.text.toString(),
                         "${location!!.longitude} , ${location!!.latitude}"
+
                     )
                     finish()
                 }

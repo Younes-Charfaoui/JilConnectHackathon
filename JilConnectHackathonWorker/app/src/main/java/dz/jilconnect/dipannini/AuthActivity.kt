@@ -50,8 +50,6 @@ class AuthActivity : AppCompatActivity() {
                     PreferencesManager(this@AuthActivity).userId = response.id
                     startActivity(Intent(this@AuthActivity, MainActivity::class.java))
                 }
-            } else {
-
             }
         }
     }
