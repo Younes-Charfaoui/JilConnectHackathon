@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit
 interface CashToCashService {
 
     companion object {
-        private const val BASE_URL = "http://9a2c2b46.ngrok.io/"
+        private const val BASE_URL = "http://22d50575.ngrok.io/"
         private const val REGISTER = "register"
         private const val PROFILE = "api/profile"
 
