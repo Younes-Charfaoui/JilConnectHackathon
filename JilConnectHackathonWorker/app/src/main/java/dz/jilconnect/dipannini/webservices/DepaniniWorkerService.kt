@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit
 interface DepaniniWorkerService {
 
     companion object {
-        private const val BASE_URL = "http://22d50575.ngrok.io/"
+        private const val BASE_URL = "http://d9a7b159.ngrok.io/"
         private const val REGISTER = "register"
 
         val retrofit: Retrofit = Retrofit.Builder()

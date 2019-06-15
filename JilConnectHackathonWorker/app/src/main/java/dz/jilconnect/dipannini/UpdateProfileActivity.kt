@@ -110,7 +110,7 @@ class UpdateProfileActivity : AppCompatActivity() {
                     networkLayer.updateUserData(
                         PreferencesManager(this@UpdateProfileActivity).userId,
                         phoneEdit.text.toString(),
-                        "${location!!.longitude} , ${location!!.latitude}"
+                        "${location!!.latitude} , ${location!!.longitude} "
 
                     )
                     finish()
